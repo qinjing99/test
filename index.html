@@ -3,48 +3,99 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>无标题文档</title>
+<link rel="stylesheet" type="text/css" href="css/style.css"/>
+<script src="jquery.1.11.0.min.js"></script>
 <script>
+$(function(){
+	//经度：116.308909；纬度：40.034718
+	$.ajax({
+	  type: "GET",
+	  url: "https://free-api.heweather.com/s6/weather/forecast?",
+	  cache: false,
+	  data:
+		{
+			"location":"116.308909,40.034718",    
+			"key":"b3724bb4bde545a68a4f6739b6ca1f27",    
+		},
+	  success: function(data){
+	  	console.log(data);
+	  	var iData=data.HeWeather6[0].daily_forecast;
+	  	 $('.bottom div').each(function(i){
+            $('.bottom div').eq(i).find('em').html(iData[i].cond_txt_d);
+            $('.bottom div').eq(i).find('i').html(iData[i].tmp_max+'~'+iData[i].tmp_min);
+            $('.bottom div').eq(i).find('p').html(iData[i].date);
+	  	 })
+	    
+	  }
+	});
+	$.ajax({
+	  type: "GET",
+	  url: "https://free-api.heweather.com/s6/weather/now?",
+	  cache: false,
+	  data:
+		{
+			"location":"116.308909,40.034718",    
+			"key":"b3724bb4bde545a68a4f6739b6ca1f27",    
+		},
+	  success: function(data){
+	  	console.log(data);
+	  	var iData=data.HeWeather6[0].now;
+	     $('.p1 span').text(iData.cond_txt);
+	     $('.p1 i').text(iData.tmp);
+	    
+	     $('.p3 span').text(iData.wind_dir);
+	     $('.p3 i').text(iData.wind_sc);
 
-//LBS : 基于地图信息的应用
+	     $('.p4 i').text(iData.hum+'%');
+	  }
+	});
 
-window.onload = function(){
-	var oInput = document.getElementById('input1');
-	var oT = document.getElementById('t1');
+})
 	
-	oInput.onclick = function(){                       //navigator.geolocation是个对象，对象下面有很多方法
-		navigator.geolocation.getCurrentPosition(function(position){   //navigator.geolocation.getCurrentPosition获取位置，成功的回调
-			oT.value += '经度:' + position.coords.longitude+'\n';
-			oT.value += '纬度 :' + position.coords.latitude+'\n';
-			oT.value += '准确度 :' + position.coords.accuracy+'\n';
-			oT.value += '海拔 :' + position.coords.altitude+'\n';                 //undefined ，在移动设备根据GPS获取
-			oT.value += '海拔准确度 :' + position.coords.altitudeAcuracy+'\n';    //NAN  在移动设备根据GPS获取
-			oT.value += '行进方向 :' + position.coords.heading+'\n';              //NAN  在移动设备根据GPS获取
-			oT.value += '地面速度 :' + position.coords.speed+'\n';
-			oT.value += '时间戳:' + new Date(position.timestamp)+'\n';
+/*	var oInput = document.getElementById('input1');
+	//请求经纬度
+	   navigator.geolocation.getCurrentPosition(function(position){   //navigator.geolocation.getCurrentPosition获取位置，成功的回调
+			oInput.value += '经度:' + position.coords.longitude+'\n';
+			oInput.value += '纬度 :' + position.coords.latitude+'\n';
+			console.log(position.coords.longitude+':'+position.coords.latitude);
 		},function(err){                   //失败的回调函数
 			alert( err.code );             //err.code 失败所对应的编号；
-			                               //0代表不包括其他错误编号的错误；
-			                               //1代表用户拒绝获取地理信息；
-			                               //2代表尝试获取用户信息，但失败了；
-			                               //3代表设置的timeout值，获取超时了
-
-			
 		},{
 			enableHighAcuracy : true,      //更精确的查找，默认false；
-			//timeout : 5000,                //请求最大时间，不设置就是一直请求，超出则超时
 			maximumAge : 5000              //设置缓存的最大时间，连续点击可以走缓存
-		});
-		
-	};
-	
-};
+		});*/
+
+
 
 </script>
 </head>
-
 <body>
-<input type="button" value="请求" id="input1" /><br />
-<textarea id="t1" style="width:400px; height:400px; border:1px #000 solid;">
-</textarea>
+   <div class='body'>
+      <h6>天气来源：和风天气</h6>
+       <h1>
+         <img src='' />
+         <b>32°</b>
+       </h1>
+       <section class="top clearfix">
+       	  <p class="p1"><span>sdf</span><i></i></p>
+       	  <p class="p2"><span>空气质量</span><i>优</i></p>
+       	  <p class="p3"><span>sdf</span><i></i></p>
+       	  <p class="p4"><span>湿度</span><i></i></p>
+       </section>
+       <section class="bottom clearfix">
+       	  <div>
+       	  	 <h4><em>晴</em><i>32~17</i></h4>
+       	  	 <p>09/18  星期一</p>
+       	  </div>
+       	   <div>
+       	  	 <h4><em>晴</em><i>32~17</i></h4>
+       	  	 <p>09/18  星期一</p>
+       	  </div>
+       	   <div>
+       	  	 <h4><em>晴</em><i>32~17</i></h4>
+       	  	 <p>09/18  星期一</p>
+       	  </div>
+       </section>
+   </div>
 </body>
 </html>
