@@ -14,24 +14,11 @@ article, footer, header,  menu, nav, section {   display: block;  }
 .clearfix:after {visibility:hidden;display:block;content:'';clear:both;}
 .clearfix {zoom:1;}
 /* *****baseend****************/
-.page{width:100%;padding:0 12px 0 20px;box-sizing:border-box;-moz-box-sizing:border-box;
--webkit-box-sizing:border-box;}
-.ileft{float:left;text-align: left}
-.Ptitle{padding-top:6px;position: relative}
-.Ptitle i{width:27px;height:3px;background:#06c1ae;position: absolute;left:0;top:0;}
-.Ptitle h2{font-size:18px;color:#00c5ae;line-height: 24px;}
-.Ptitle p{font-size:14px;line-height: 21px;}
-.marB{margin-bottom:17px;}
-.Pcont{clear:both;padding-right:44px;text-align: right;position: relative}
-/*
-.Pcont img{width:70%;margin-top:14px;}
-.Pcont span{position: absolute;right:43px;top:-8px;font-size:14px;color:#00c5ae}
-.Ppag1_text{position: absolute;bottom: 115px;
-	left: 23px;width:130px;}
-.Ppag1_text h5{color:#00c5ae;line-height: 22px;font-size:14px;}
-.Ppag1_text p{line-height: 22px;font-size:13px;}
-*/
-.iright{float:right;text-align: right}
-.PtitleT{margin-top:54px;margin-right:12px;}
-.Ptitle em{width:27px;height:3px;background:#06c1ae;position: absolute;right:0;top:0;}
-.PcontB{padding-left:50px;padding-bottom:41px;}
+.body{width:1024px;margin:0 auto;border: 1px solid #eee}
+.body h1{height:180px;text-align: center;line-height: 200px;font-size: 40px}
+.top{width:560px;margin:0 auto;height:140px;}
+.top p{float:left;width:280px;height:56px;line-height: 56px;}
+.top span{color:#444;}
+.top i{color:#777;}
+.bottom{height:120px;display: flex;display:-moz-flex;}
+.bottom div{flex:1;background:#c7c7c7;border-right:1px solid #a29e9e;height:120px;width；100%;}
