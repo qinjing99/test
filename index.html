@@ -1,101 +1,117 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>无标题文档</title>
-<link rel="stylesheet" type="text/css" href="css/style.css"/>
-<script src="jquery.1.11.0.min.js"></script>
-<script>
-$(function(){
-	//经度：116.308909；纬度：40.034718
-	$.ajax({
-	  type: "GET",
-	  url: "https://free-api.heweather.com/s6/weather/forecast?",
-	  cache: false,
-	  data:
-		{
-			"location":"116.308909,40.034718",    
-			"key":"b3724bb4bde545a68a4f6739b6ca1f27",    
-		},
-	  success: function(data){
-	  	console.log(data);
-	  	var iData=data.HeWeather6[0].daily_forecast;
-	  	 $('.bottom div').each(function(i){
-            $('.bottom div').eq(i).find('em').html(iData[i].cond_txt_d);
-            $('.bottom div').eq(i).find('i').html(iData[i].tmp_max+'~'+iData[i].tmp_min);
-            $('.bottom div').eq(i).find('p').html(iData[i].date);
-	  	 })
-	    
-	  }
-	});
-	$.ajax({
-	  type: "GET",
-	  url: "https://free-api.heweather.com/s6/weather/now?",
-	  cache: false,
-	  data:
-		{
-			"location":"116.308909,40.034718",    
-			"key":"b3724bb4bde545a68a4f6739b6ca1f27",    
-		},
-	  success: function(data){
-	  	console.log(data);
-	  	var iData=data.HeWeather6[0].now;
-	     $('.p1 span').text(iData.cond_txt);
-	     $('.p1 i').text(iData.tmp);
-	    
-	     $('.p3 span').text(iData.wind_dir);
-	     $('.p3 i').text(iData.wind_sc);
+    <title type="0"><%= site %> | <%= local.title %></title>
+    <meta charset="UTF-8">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"><!--device-width-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit">
+     <link rel="stylesheet" href="https://robot-lib.cdn.kangfuzi.com/sdk/assets/css/znxy-1.1.0.css" />
+    <style>
+    body{height:728px;}
+    .Y_wrap{height:100%;}
+    .JyiDuok1{display:-webkit-box;display:-webkit-flex;display:flex;height:728px;
+    padding:0px 30px 0 27px;background: #F8F8F8;}
+	.JyiDuok1Left{width:241px;height:100%;background:#fff}
+	.JyiDuok1Left p{width:241px;height:240px;box-shadow: 0 6px 24px 0 rgba(42,55,173,0.10);padding:21px 9px 19px 9px; -webkit-box-sizing: border-box;
+	    box-sizing: border-box;margin-left:-3px;background:#fff;font-size: 28px;
+	    color: #2A2A2A;
+	    line-height: 40px;text-align:justify;text-justify:inter-word;}
+	.JyiDuok1Left p b{font-size:27px;}
+	.JyiDuokRight{width:241px;height:100%;background:#fff;margin-top:9px;}
+	.JyiDuokCenter{width:718px;height:100%;background:#fff;margin:0 20px;margin-top:9px;position: relative}
+	.JyiDuokCenter iframe{width:100%;height:100%}
+	.wapperContent{position: absolute;
+	    top: 60px;
+	    left: 0;
+	    bottom: 0;
+	    right: 0;
+	    width: 100%;
+	    overflow-y: auto;height:100%}
+	#container{background:#f2f2f2;overflow:scroll;padding-bottom:40px;}
+	.ItitleK{height:60px;line-height:60px;background: #252A62;font-size: 32px;margin:0;
+	    color: #FFFFFF;
+	    text-align: center;font-weight:normal}
+	.znxy-views *{font-size:22px;}
+	.znxy-ui-formitem-radio>i,.znxy-ui-formitem-checkbox>i{top:6px;}
+	.znxy-results-view-register .znxy-results-result-name{background:#fff}
+	.znxy-views .znxy-questions-button{font-size:20px;}
+	.znxy-views .znxy-questions-photo img,.znxy-views .znxy-answers-photo img{width:46px;height:46px;}
+	.znxy-views .znxy-ui-select select{font-size:20px;}
 
-	     $('.p4 i').text(iData.hum+'%');
-	  }
-	});
-
-})
-	
-/*	var oInput = document.getElementById('input1');
-	//请求经纬度
-	   navigator.geolocation.getCurrentPosition(function(position){   //navigator.geolocation.getCurrentPosition获取位置，成功的回调
-			oInput.value += '经度:' + position.coords.longitude+'\n';
-			oInput.value += '纬度 :' + position.coords.latitude+'\n';
-			console.log(position.coords.longitude+':'+position.coords.latitude);
-		},function(err){                   //失败的回调函数
-			alert( err.code );             //err.code 失败所对应的编号；
-		},{
-			enableHighAcuracy : true,      //更精确的查找，默认false；
-			maximumAge : 5000              //设置缓存的最大时间，连续点击可以走缓存
-		});*/
-
-
-
-</script>
+    </style>
 </head>
-<body>
-   <div class='body'>
-      <h6>天气来源：和风天气</h6>
-       <h1>
-         <img src='' />
-         <b>32°</b>
-       </h1>
-       <section class="top clearfix">
-       	  <p class="p1"><span>sdf</span><i></i></p>
-       	  <p class="p2"><span>空气质量</span><i>优</i></p>
-       	  <p class="p3"><span>sdf</span><i></i></p>
-       	  <p class="p4"><span>湿度</span><i></i></p>
-       </section>
-       <section class="bottom clearfix">
-       	  <div>
-       	  	 <h4><em>晴</em><i>32~17</i></h4>
-       	  	 <p>09/18  星期一</p>
-       	  </div>
-       	   <div>
-       	  	 <h4><em>晴</em><i>32~17</i></h4>
-       	  	 <p>09/18  星期一</p>
-       	  </div>
-       	   <div>
-       	  	 <h4><em>晴</em><i>32~17</i></h4>
-       	  	 <p>09/18  星期一</p>
-       	  </div>
-       </section>
-   </div>
+<body class="showBody">
+<div class="Y_wrap Y_littleCafe">
+    <div class="JyiDuok1 Jhide clearfix">
+        <div class="JyiDuokCenter JyiDuok1Con">
+            <h4 class="ItitleK"></h4>
+            <div class="wapperContent" id="context">
+                <div id="container" ></div>
+                <div id="result"></div>
+            </div>
+           <!-- <iframe frameborder="no" border="0"   src="https://robot-lib-achieve.kangfuzi.com/?app_id=5ac31fc1bea7c06ca18fdcad"></iframe>-->
+        </div>
+        <div class="JyiDuokRight JyiDuok1Con">
+            <h2 class="ItitleK">历史问诊</h2>
+        </div>
+    </div>
+</div>
+
+<script src="https://robot-lib.cdn.kangfuzi.com/sdk/znxy-1.1.0.js"></script>
+<script>
+
+      new ZNXY.Diagnose( {
+                            app_id : '5ad40741bea7c06caf241b90',
+                            autorender : false,
+                            autoscroll : {
+                                offsetY : 100,
+                                duration : 700
+                            },
+                           
+                        } ).on( 'append-question', function( question ) {
+                            this.render( question, {
+                                container : createBox( 'question-' + question.id )
+                            } );
+                        } ).on( 'delete-question', function( question ) {
+                            question.view && question.view.destroy();
+                        } ).on( 'answer', function( answer ) {
+                            this.render( answer, {
+                                container : createBox( 'answer-' + answer.id )
+                            } );
+                        } ).on( 'delete-answer', function( answer ) {
+                            removeBox( 'answer-' + answer.id );
+                            // answer.view && answer.view.destroy(); 可以手动删除容器，也可以调用此方法
+                        } ).on( 'result', function( result ) {
+                            this.render( result, {
+                                container : createBox( 'result-' + result.id )
+                            }  ); // 如果不传入 container 参数，则自动创建container
+                        } ).on( 'delete-result', function(result) {
+                            result.view && result.view.destroy();
+                        } ).on( 'loading', function( loading ) {
+                            this.render( loading, {
+                                container : document.body
+                            } );
+                        } ).on( 'loaded',  function( loading )  {
+                            loading.view && loading.view.destroy();
+                        } ).on( 'error', function( e ) {
+                            this.render( e, {
+                                container : document.body
+                            } );
+                        } ).start();// 如果您需要监听loading或者loaded事件，请在添加监听之后执行start方法，否则会监听不到开启流程的loading
+                        function createBox( id ) {
+                            const container = document.getElementById( 'container' );
+                            const box = document.createElement( 'div' );
+                            container.appendChild( box );
+                            box.id = id;
+                            return box;
+                        }
+                        function removeBox( id ) {
+                            const box = document.getElementById( id );
+                            box && box.parentNode.removeChild( box );
+                        }
+</script>
 </body>
 </html>
